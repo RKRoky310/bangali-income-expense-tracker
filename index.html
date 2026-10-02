@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>আয় ও খরচ ট্র্যাকার</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ব্যক্তিগত ফাইন্যান্স</p>
+          <h1>আয় ও খরচ ট্র্যাকার</h1>
+        </div>
+        <button id="resetDataBtn" class="secondary-btn">ডেটা রিসেট</button>
+      </header>
+
+      <main>
+        <section class="summary-grid">
+          <article class="stat-card income">
+            <span>মোট আয়</span>
+            <strong id="totalIncome">৳ ০</strong>
+          </article>
+          <article class="stat-card expense">
+            <span>মোট খরচ</span>
+            <strong id="totalExpense">৳ ০</strong>
+          </article>
+          <article class="stat-card balance">
+            <span>ব্যালেন্স</span>
+            <strong id="balanceAmount">৳ ০</strong>
+          </article>
+        </section>
+
+        <section class="panel">
+          <h2>নতুন লেনদেন</h2>
+          <form id="entryForm" class="entry-form">
+            <div class="field-row">
+              <div class="field-group">
+                <label for="type">ধরন</label>
+                <select id="type" required>
+                  <option value="income">আয়</option>
+                  <option value="expense">খরচ</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="category">ক্যাটাগরি</label>
+                <select id="category" required>
+                  <option value="বেতন">বেতন</option>
+                  <option value="ফ্রিল্যান্স">ফ্রিল্যান্স</option>
+                  <option value="বিক্রয়">বিক্রয়</option>
+                  <option value="খাদ্য">খাদ্য</option>
+                  <option value="ভাড়া">ভাড়া</option>
+                  <option value="পরিবহন">পরিবহন</option>
+                  <option value="বীমা">বীমা</option>
+                  <option value="শিক্ষা">শিক্ষা</option>
+                  <option value="অন্যান্য">অন্যান্য</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field-group">
+                <label for="amount">টাকার পরিমাণ</label>
+                <input id="amount" type="number" min="0" step="1" placeholder="ধরুন 5000" required />
+              </div>
+
+              <div class="field-group">
+                <label for="date">তারিখ</label>
+                <input id="date" type="date" required />
+              </div>
+            </div>
+
+            <div class="field-group full-width">
+              <label for="note">নোট</label>
+              <input id="note" type="text" maxlength="80" placeholder="উদাহরণ: বাজারের খরচ, বেতন, ফ্রিল্যান্স প্রকল্প" />
+            </div>
+
+            <button type="submit" class="primary-btn">সংরক্ষণ করুন</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="list-header">
+            <h2>লেনদেন তালিকা</h2>
+            <div class="month-filter-wrap">
+              <label for="monthFilter">মাস</label>
+              <input id="monthFilter" type="month" />
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ধরন</th>
+                  <th>ক্যাটাগরি</th>
+                  <th>পরিমাণ</th>
+                  <th>তারিখ</th>
+                  <th>নোট</th>
+                  <th>অ্যাকশন</th>
+                </tr>
+              </thead>
+              <tbody id="entriesBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
